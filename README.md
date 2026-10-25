@@ -21,16 +21,6 @@ Extract the package and open `index.html` in a browser. Alternatively, run a sta
 
 No npm installation, API key, database, or server logic is required. All asset URLs are relative, including support for GitHub Pages project subdirectories. Keep the complete `assets/` folder with the other files.
 
-## Deploy to GitHub Pages
-
-1. Create a GitHub repository.
-2. Upload `index.html`, `style.css`, `main.js`, `README.md`, and the complete `assets/` directory to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Choose the `main` branch and `/(root)`, then click **Save**.
-6. Wait for deployment and open the address shown in Pages settings, usually `https://your-username.github.io/repository-name/`.
-
-For a `/docs` deployment, move all files together into `docs/` and choose that folder instead. No build command or custom workflow is needed. This package does not create a repository or publish on your behalf.
 
 ## Levels
 
