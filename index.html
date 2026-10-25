@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f9f9f9">
+  <meta name="description" content="Five small tests. A little human imperfection. Play Are You Human?">
+  <title>Are You Human? · The Humanity Test</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="wordmark" href="./" aria-label="Are You Human home"><span class="brand-icon" aria-hidden="true">✓</span>are you human<span class="blue">?</span></a>
+    <button class="text-button about-button" id="about-button">About the test <span aria-hidden="true">↗</span></button>
+  </header>
+
+  <main id="game">
+    <div class="intro">
+      <span class="eyebrow"><span class="live-dot"></span> A SMALL TEST OF HUMANITY</span>
+      <h1>Are you human<span class="blue">?</span></h1>
+      <p>Five small tests. Proof of your perfect imperfections.</p>
+    </div>
+
+    <section class="game-shell" aria-label="The humanity test">
+      <div class="progress-heading"><span>Verification <span class="muted">/ PROGRESS</span></span><span id="progress-text">1 <span class="muted">/ 5</span></span></div>
+      <div id="progress" class="progress-track" role="progressbar" aria-label="Current level" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"><span></span><span></span><span></span><span></span><span></span></div>
+      <ol class="steps" aria-label="Five verification steps">
+        <li class="active">Level 1</li><li>Level 2</li><li>Level 3</li><li>Level 4</li><li>Level 5</li>
+      </ol>
+
+      <div class="challenge" id="challenge">
+        <div class="challenge-heading"><h2 id="level-title" tabindex="-1">Level 1</h2></div>
+
+        <section id="level-1" class="level-panel" aria-label="Checkbox verification">
+          <div class="checkbox-stage">
+            <div class="captcha-widget">
+              <button id="human-checkbox" class="human-checkbox" role="checkbox" aria-checked="false" aria-label="I'm not a robot"><span class="check-shape" aria-hidden="true"></span></button>
+              <span class="captcha-label">I'm not a robot</span>
+              <div class="captcha-brand"><img src="assets/recaptcha.svg" width="34" height="34" alt="reCAPTCHA-style icon"><span>reCAPTCHA</span><small>Game edition</small></div>
+            </div>
+            <p class="stage-caption" id="checkbox-status" role="status"></p>
+          </div>
+        </section>
+
+        <section id="level-2" class="level-panel" aria-label="Word search" hidden>
+          <div class="panel-content word-content">
+            <p class="instruction">Find and select these words in order:</p>
+            <ol id="word-targets" class="word-targets"><li class="current">SEARCH</li><li>ENGINE</li><li>OPTIMIZATION</li></ol>
+            <p class="microcopy">Connect neighboring letters in any direction. Click the last letter to undo.</p>
+            <div id="letter-grid" class="letter-grid" role="group" aria-label="12 by 12 letter grid"></div>
+            <div class="selection-row"><span id="word-selection" aria-live="polite">Selected: _ _ _ _ _ _</span><button class="text-button" id="clear-word">Clear word</button></div>
+            <p id="word-status" class="feedback" role="status">Start with the S in SEARCH.</p>
+          </div>
+        </section>
+
+        <section id="level-3" class="level-panel" aria-label="Memory match" hidden>
+          <div class="panel-content"><div class="instruction-row"><p class="instruction">Turn the cards over. Find all six pairs.</p><span id="match-count" class="small-counter">0 / 6</span></div>
+            <div id="memory-grid" class="memory-grid" aria-label="Matching cards in three rows and four columns"></div>
+            <p id="memory-status" class="feedback" role="status"></p>
+          </div>
+        </section>
+
+        <section id="level-4" class="level-panel" aria-label="Reaction test" hidden>
+          <div class="panel-content reaction-content"><p class="instruction">Stop the timer at exactly <strong>1.000 seconds</strong> to pass verification.</p>
+            <div class="timer" id="timer" aria-label="Timer">0.000<span>s</span></div>
+            <span class="target-label">TARGET <strong>1.000s</strong></span>
+            <button id="timer-button" class="primary-button timer-button">Start timer <span aria-hidden="true">→</span></button>
+            <p class="microcopy">Press <kbd>Space</kbd> to stop, or tap the button on mobile.</p>
+            <p id="reaction-status" class="feedback" role="status">Ready? Trust your instinct.</p>
+            <button id="reaction-continue" class="primary-button reaction-continue" hidden>Continue to Level 5 <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section id="level-5" class="level-panel" aria-label="Number bomb" hidden>
+          <div class="panel-content bomb-content"><div class="bomb-symbol" aria-hidden="true">✳</div><p class="instruction">A bomb is hiding between 1 and 100.</p><p class="microcopy">Find its number to complete your human verification.</p>
+            <div class="range-display"><span id="range-low">1</span><div class="range-line"><span id="range-fill"></span></div><span id="range-high">100</span></div>
+            <form id="bomb-form" novalidate><label for="bomb-input" class="input-label">Your number</label><div class="guess-row"><input id="bomb-input" type="number" inputmode="numeric" min="1" max="100" step="1" placeholder="Enter 1–100" required autocomplete="off" aria-describedby="bomb-status"><button class="primary-button" type="submit">Guess <span aria-hidden="true">→</span></button></div></form>
+            <p id="bomb-status" class="feedback" role="status">Enter a whole number from 1 to 100 to find the bomb.</p>
+            <div class="guess-history" id="guess-history" aria-label="Previous guesses"></div>
+          </div>
+        </section>
+
+        <footer class="challenge-footer"><div class="footer-tools"><button id="refresh-button" class="icon-button" aria-label="Restart this level" title="Restart this level">↻</button><span class="footer-divider"></span><span id="footer-hint">A little human intuition</span></div><button id="verify-button" class="primary-button verify-button" disabled>Verify <span aria-hidden="true">→</span></button></footer>
+      </div>
+      <div class="below-challenge"><span><span class="tiny-lock" aria-hidden="true">▣</span> No sign-up · No personal data collected</span><button id="restart-button" class="text-button">Start over</button></div>
+    </section>
+    <div class="closing-note"><span class="note-line"></span><p>A little imperfection. A lot of humanity.</p><span class="note-line"></span></div>
+  </main>
+
+  <section id="reward" class="reward" hidden aria-label="Verification complete"><div id="confetti" class="confetti" aria-hidden="true"></div><div class="reward-content"><div class="success-seal" aria-hidden="true">✓</div><p class="eyebrow">HUMAN VERIFIED · GAME COMPLETE</p><h1>Congratulations, you’re in<span class="blue">!</span></h1><h2>Welcome to HKU FBE</h2><p>Human verified. Your next stop: HKU Business School.</p><a id="reward-link" class="primary-button" href="https://ug.hkubs.hku.hk/">Explore HKU Business School <span aria-hidden="true">↗</span></a><p class="microcopy"><span id="countdown">3</span> seconds until you arrive at HKU Business School</p></div></section>
+
+  <footer class="site-footer"><span>ARE YOU HUMAN? <span class="muted">/ THE HUMANITY TEST</span></span><span>A small experiment in being human <span class="blue">✳</span></span></footer>
+  <dialog id="about-dialog"><button id="close-about" class="dialog-close icon-button" aria-label="Close">×</button><span class="eyebrow">ABOUT THE EXPERIMENT</span><h2>Perfectly imperfect. Perfectly human.</h2><p>Click, search, remember, react, and take a chance. Complete five small tests to unlock your passage to HKU Business School.</p><p>This is a playful experiment inspired by reCAPTCHA, with no affiliation to Google or HKU. It is not a real identity check or an admission offer. Game data stays in this page’s memory; reloading starts a new game.</p><button id="about-done" class="primary-button">Got it</button></dialog>
+  <noscript><p class="noscript">Please enable JavaScript to play.</p></noscript>
+</body>
+</html>
